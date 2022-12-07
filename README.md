@@ -1,1 +1,1 @@
-# Tool-Node.js-VerifyAddress
+# proof-of-address
