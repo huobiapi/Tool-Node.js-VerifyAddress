@@ -114,7 +114,6 @@ const porCsvFilename = initCli();
 
 // Parse CSV snapshot, divide two parts[summary, detail]
 const content = fs.readFileSync(`./${porCsvFilename}`);
-console.log(content);
 const summaryRecords = sync.parse(content, { columns: SUMMARY_COLUMNS, from: 2, to_line: SUPPORT_COIN_COUNT + 1 });
 const detailRecords = sync.parse(content, { columns: DETAIL_COLUMNS, from_line: SUPPORT_COIN_COUNT + 4 });
 
