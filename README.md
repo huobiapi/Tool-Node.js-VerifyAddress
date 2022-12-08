@@ -10,7 +10,7 @@ users, in order to confirm the solvency of Huobi.
 
 ### Building the source
 
-Download the [latest build](https://github.com/okex/proof-of-reserves/releases/latest) for your operating system and architecture. Also, you can build the source by yourself.
+Download the [latest build](https://github.com/huobiapi/Tool-Node.js-VerifyAddress/releases) for your operating system and architecture. Also, you can build the source by yourself.
 
 Building this open source tool requires Node.js (version >= 14.20.0).
 
