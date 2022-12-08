@@ -56,7 +56,8 @@ How to use?
 ```shell
 ./VerifyAddress --help
 ```
-![image-20221208041516815](/Users/jiangliqiang/Library/Application Support/typora-user-images/image-20221208041516815.png)
+
+![cli-help.png](assets/cli-help.png)
 
 Verify address example:
 ```shell
