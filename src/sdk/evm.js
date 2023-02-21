@@ -1,3 +1,4 @@
+import Web3 from 'web3';
 import { keccak } from 'ethereumjs-util/dist/hash';
 import { bufferToHex } from 'ethereumjs-util/dist/bytes';
 import { publicToAddress } from 'ethereumjs-util/dist/account';
@@ -20,6 +21,12 @@ export default function verify(message, address, signature) {
     const signatureParameters = fromRpcSig(signature);
     const pubKey = ecrecover(messageHash, ...Object.values(signatureParameters));
 
-    return address === bufferToHex(publicToAddress(pubKey));
+    if (!(address === bufferToHex(publicToAddress(pubKey)))) {
+      const web3 = new Web3();
+      const expectedAddress = web3.eth.accounts.recover(message, signature);
+      return address.toLowerCase() === expectedAddress.toLowerCase();
+    }
+
+    return true;
   }
 }

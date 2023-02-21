@@ -1,6 +1,6 @@
 {
   "name": "proof-of-address",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Proof of Reserves (PoR) to improve the security and transparency of user's assets by address",
   "main": "index.js",
   "author": "blockchain-validator",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "rollup src/index.js --file dist/index.js --format cjs",
     "test": "jest",
-    "compile": "pkg . --out-path=dist/ -t=node6-win-x64,node6-linux-x64,node6-macos-x64 -o=VerifyAddress -C=GZip"
+    "compile": "pkg . --out-path=dist/ -t=node14-win-x64,node14-linux-x64,node14-macos-x64 -C=GZip"
   },
   "dependencies": {
     "btc-message-verifier": "^1.0.0",
@@ -18,7 +18,8 @@
     "ethereumjs-util": "^7.1.5",
     "lodash": "^4.17.21",
     "tree-console": "^1.2.1",
-    "tronweb": "^4.4.0"
+    "tronweb": "^4.4.0",
+    "web3": "^1.8.2"
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",
