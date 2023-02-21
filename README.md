@@ -64,6 +64,10 @@ Verify address example:
 ./VerifyAddress --por_csv_filename ./huobi_por_xxxxyyzz.csv
 ```
 
+The result like below:
+![result-treeview.png](assets%2Fresult-treeview.png)
+![result-summary.png](assets%2Fresult-summary.png)
+
 ### VerifyOnline
 
 At the same time, you can use third-party tools to verify the ownership.
