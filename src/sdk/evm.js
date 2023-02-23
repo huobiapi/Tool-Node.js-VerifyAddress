@@ -17,16 +17,20 @@ export default function verify(message, address, signature) {
   if (isEmptySig(signature))
     return false;
   else {
-    const messageHash = keccak(Buffer.from(message));
-    const signatureParameters = fromRpcSig(signature);
-    const pubKey = ecrecover(messageHash, ...Object.values(signatureParameters));
+    try {
+      const messageHash = keccak(Buffer.from(message));
+      const signatureParameters = fromRpcSig(signature);
+      const pubKey = ecrecover(messageHash, ...Object.values(signatureParameters));
 
-    if (!(address === bufferToHex(publicToAddress(pubKey)))) {
-      const web3 = new Web3();
-      const expectedAddress = web3.eth.accounts.recover(message, signature);
-      return address.toLowerCase() === expectedAddress.toLowerCase();
+      if (!(address === bufferToHex(publicToAddress(pubKey)))) {
+        const web3 = new Web3();
+        const expectedAddress = web3.eth.accounts.recover(message, signature);
+        return address.toLowerCase() === expectedAddress.toLowerCase();
+      }
+
+      return true;
+    } catch (err) {
+      return false;
     }
-
-    return true;
   }
 }

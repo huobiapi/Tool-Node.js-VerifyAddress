@@ -9,5 +9,13 @@ import { isEmptySig } from '../utils/lib';
  * @returns {boolean} - Indicates whether message's signature has been successfully verified
  */
 export default function verify(message, address, signature) {
-  return isEmptySig(signature) ? false : btcMsgVerifier.verifyMessage(address, signature, message);
+  if (isEmptySig(signature)) {
+    return false;
+  } else {
+    try {
+      return btcMsgVerifier.verifyMessage(address, signature, message);
+    } catch (err) {
+      return false;
+    }
+  }
 }

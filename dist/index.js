@@ -44,7 +44,15 @@ const initCli = () => {
  * @returns {boolean} - Indicates whether message's signature has been successfully verified
  */
 function verify$2(message, address, signature) {
-  return isEmptySig(signature) ? false : btcMsgVerifier.verifyMessage(address, signature, message);
+  if (isEmptySig(signature)) {
+    return false;
+  } else {
+    try {
+      return btcMsgVerifier.verifyMessage(address, signature, message);
+    } catch (err) {
+      return false;
+    }
+  }
 }
 
 /**
@@ -59,17 +67,21 @@ function verify$1(message, address, signature$1) {
   if (isEmptySig(signature$1))
     return false;
   else {
-    const messageHash = hash.keccak(Buffer.from(message));
-    const signatureParameters = signature.fromRpcSig(signature$1);
-    const pubKey = signature.ecrecover(messageHash, ...Object.values(signatureParameters));
+    try {
+      const messageHash = hash.keccak(Buffer.from(message));
+      const signatureParameters = signature.fromRpcSig(signature$1);
+      const pubKey = signature.ecrecover(messageHash, ...Object.values(signatureParameters));
 
-    if (!(address === bytes.bufferToHex(account.publicToAddress(pubKey)))) {
-      const web3 = new Web3();
-      const expectedAddress = web3.eth.accounts.recover(message, signature$1);
-      return address.toLowerCase() === expectedAddress.toLowerCase();
+      if (!(address === bytes.bufferToHex(account.publicToAddress(pubKey)))) {
+        const web3 = new Web3();
+        const expectedAddress = web3.eth.accounts.recover(message, signature$1);
+        return address.toLowerCase() === expectedAddress.toLowerCase();
+      }
+
+      return true;
+    } catch (err) {
+      return false;
     }
-
-    return true;
   }
 }
 
@@ -87,30 +99,34 @@ function verifySignature(msg, addr, sig) {
  * @returns {boolean} - Indicates whether message's signature has been successfully verified
  */
 function verify(message, address, signature) {
-  if (isEmptySig(signature)) {
+  if (isEmptySig(signature))
     return false;
+  else {
+    try {
+      let signedStr;
+
+      const tail = signature.substring(128, 130);
+      if(tail === '01')
+        signedStr = signature.substring(0,128)+'1c';
+      else if(tail === '00')
+        signedStr = signature.substring(0,128)+'1b';
+      else
+        signedStr = signature;
+
+      let verifyRes = verifySignature(Buffer.from(message).toString('hex'), address, signedStr);
+
+      if (!verifyRes) {
+        const hexStrWithout0x = TronWeb.toHex(message).replace(/^0x/, '');
+        const byteArray = TronWeb.utils.code.hexStr2byteArray(hexStrWithout0x);
+        const strHash= TronWeb.sha3(byteArray).replace(/^0x/, '');
+        verifyRes = verifySignature(strHash, address, signedStr);
+      }
+
+      return verifyRes;
+    } catch (err) {
+      return false;
+    }
   }
-
-  let signedStr;
-
-  const tail = signature.substring(128, 130);
-  if(tail === '01')
-    signedStr = signature.substring(0,128)+'1c';
-  else if(tail === '00')
-    signedStr = signature.substring(0,128)+'1b';
-  else
-    signedStr = signature;
-
-  let verifyRes = verifySignature(Buffer.from(message).toString('hex'), address, signedStr);
-
-  if (!verifyRes) {
-    const hexStrWithout0x = TronWeb.toHex(message).replace(/^0x/, '');
-    const byteArray = TronWeb.utils.code.hexStr2byteArray(hexStrWithout0x);
-    const strHash= TronWeb.sha3(byteArray).replace(/^0x/, '');
-    verifyRes = verifySignature(strHash, address, signedStr);
-  }
-
-  return verifyRes;
 }
 
 /**
