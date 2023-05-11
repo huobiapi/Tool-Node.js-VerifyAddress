@@ -11,6 +11,8 @@ var bytes = require('ethereumjs-util/dist/bytes');
 var account = require('ethereumjs-util/dist/account');
 var signature = require('ethereumjs-util/dist/signature');
 var TronWeb = require('tronweb');
+var nacl = require('tweetnacl');
+var algosdk = require('algosdk');
 
 /**
  * Check signature is empty
@@ -43,7 +45,7 @@ const initCli = () => {
  * @param {string} signature - The message's signature (as returned by the sign() method). If a string is provided instead of a Buffer, it is assumed to be base64 encoded
  * @returns {boolean} - Indicates whether message's signature has been successfully verified
  */
-function verify$2(message, address, signature) {
+function verify$3(message, address, signature) {
   if (isEmptySig(signature)) {
     return false;
   } else {
@@ -63,7 +65,7 @@ function verify$2(message, address, signature) {
  * @param {string} signature - it's a signed message (EIP-191 or EIP-712) adding `27` at the end. Remove if needed.
  * @returns {boolean} - Indicates whether message's signature has been successfully verified
  */
-function verify$1(message, address, signature$1) {
+function verify$2(message, address, signature$1) {
   if (isEmptySig(signature$1))
     return false;
   else {
@@ -98,7 +100,7 @@ function verifySignature(msg, addr, sig) {
  * @param {string} signature - it's a signed message. see NOTE
  * @returns {boolean} - Indicates whether message's signature has been successfully verified
  */
-function verify(message, address, signature) {
+function verify$1(message, address, signature) {
   if (isEmptySig(signature))
     return false;
   else {
@@ -130,18 +132,42 @@ function verify(message, address, signature) {
 }
 
 /**
+ * Verify a address's signature
+ * @param {string} message - The original predefined message
+ * @param {string} address - A algo address, need transfer to public key
+ * @param {string} signature - The message's signature (as returned by the sign() method). If a string is provided instead of a Buffer, it is assumed to be base64 encoded
+ * @returns {boolean} - Indicates whether message's signature has been successfully verified
+ */
+function verify(message, address, signature) {
+  if (isEmptySig(signature)) {
+    return false;
+  } else {
+    try {
+      const publicKey = Buffer.from(algosdk.decodeAddress(address).publicKey).toString('base64');
+      const messageHandler = Buffer.from(message, 'utf8');
+      const signatureHandler = Buffer.from(signature, 'base64');
+      const publicKeyHandler = Buffer.from(publicKey, 'base64');
+      return nacl.sign.detached.verify(messageHandler, signatureHandler, publicKeyHandler);
+    } catch (err) {
+      return false;
+    }
+  }
+}
+
+/**
  * Route SDK support, Map coin to function
  * @param {string} chain - The coin to DETAIL_KEY_MAPPING value
  * @returns {function} - Indicates whether chain signature will be called
  */
 const verifySwitch = (chain) => ({
-  'BTC': verify$2,
-  'ETH': verify$1,
-  'TRX': verify,
+  'BTC': verify$3,
+  'ETH': verify$2,
+  'TRX': verify$1,
+  'ALGO': verify,
 })[chain];
 
 const PLACEHOLDER = '│   ';
-const SUPPORT_COIN_COUNT = 11;
+const SUPPORT_COIN_COUNT = 14;
 const SUMMARY_LEAF = [4, 8, SUPPORT_COIN_COUNT - 1];
 const SUMMARY_COLUMNS = ['coin', 'snapshot_height', 'balance'];
 const DETAIL_COLUMNS = ['coin', 'address', 'snapshot_height', 'balance', 'message', 'signature'];
@@ -151,12 +177,15 @@ const DETAIL_KEY_MAPPING = {
   BTC: 'BTC',
   ETH: 'ETH',
   TRX: 'TRX',
+  BETH: 'ETH',
   'HT-ETH': 'ETH',
   'ETH-Arbitrum': 'ETH',
   'ETH-Optimism': 'ETH',
   'USDT-Avalanche C-Chain': 'ETH',
   'USDT-TRC20': 'TRX',
   'USDT-ETH': 'ETH',
+  'USDT-BTTC': 'ETH',
+  'USDT-ALGO': 'ALGO',
 };
 
 // Initialization cli program with commander
