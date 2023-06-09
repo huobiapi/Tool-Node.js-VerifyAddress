@@ -18,4 +18,6 @@ export const DETAIL_KEY_MAPPING = {
   'USDT-ETH': 'ETH',
   'USDT-BTTC': 'ETH',
   'USDT-ALGO': 'ALGO',
+  'ETH-BTTC': 'ETH',
+  'BETH-Heco': 'ETH',
 }
