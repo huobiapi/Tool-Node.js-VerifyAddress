@@ -1,3 +1,4 @@
+import { execSync } from 'child_process'
 import { isEmpty } from 'lodash';
 import { Command } from 'commander';
 
@@ -24,3 +25,10 @@ export const initCli = () => {
   const { por_csv_filename: porCsvFilename } = program.opts();
   return porCsvFilename;
 }
+
+/**
+ * Get watershed line number
+ * @param {*} csvFile
+ * @returns {string} watershed line number
+ */
+export const getWatershed = (csvFile) => execSync(`awk '! NF { print NR; exit }' ${csvFile}`, { encoding: 'utf8' }).trim()

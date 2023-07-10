@@ -2,6 +2,7 @@ import verifyBtc from "../sdk/btc";
 import verifyEvm from "../sdk/evm";
 import verifyTrx from "../sdk/trx";
 import verifyAlgo from "../sdk/algo";
+import verifySol from "../sdk/sol";
 
 /**
  * Route SDK support, Map coin to function
@@ -13,4 +14,5 @@ export const verifySwitch = (chain) => ({
   'ETH': verifyEvm,
   'TRX': verifyTrx,
   'ALGO': verifyAlgo,
+  'SOL': verifySol,
 })[chain];

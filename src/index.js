@@ -2,16 +2,18 @@ import fs from 'fs';
 import { filter } from 'lodash';
 import { parse } from 'csv-parse/sync';
 import { verifySwitch } from './route/index';
-import { initCli } from './utils/lib';
-import { PLACEHOLDER, SUPPORT_COIN_COUNT, SUMMARY_LEAF, SUMMARY_COLUMNS, DETAIL_COLUMNS, DETAIL_KEY_MAPPING, PASSED, FAILED } from './utils/constants';
+import { initCli, getWatershed } from './utils/lib';
+import { PLACEHOLDER, SUMMARY_COLUMNS, DETAIL_COLUMNS, DETAIL_KEY_MAPPING, PASSED, FAILED } from './utils/constants';
 
 // Initialization cli program with commander
 const porCsvFilename = initCli();
 
 // Parse CSV snapshot, divide two parts[summary, detail]
 const content = fs.readFileSync(`./${porCsvFilename}`);
-const summaryRecords = parse(content, { columns: SUMMARY_COLUMNS, from: 2, to_line: SUPPORT_COIN_COUNT + 1 });
-const detailRecords = parse(content, { columns: DETAIL_COLUMNS, from_line: SUPPORT_COIN_COUNT + 4 });
+const watershed = getWatershed(`./${porCsvFilename}`)
+const SUMMARY_LEAF = [4, 8, +watershed - 2];
+const summaryRecords = parse(content, { columns: SUMMARY_COLUMNS, from: 2, to_line: +watershed - 1 });
+const detailRecords = parse(content, { columns: DETAIL_COLUMNS, from_line: +watershed + 1 });
 
 // Counter
 let passed = 0;

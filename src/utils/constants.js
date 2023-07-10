@@ -1,6 +1,4 @@
 export const PLACEHOLDER = '│   ';
-export const SUPPORT_COIN_COUNT = 14;
-export const SUMMARY_LEAF = [4, 8, SUPPORT_COIN_COUNT - 1];
 export const SUMMARY_COLUMNS = ['coin', 'snapshot_height', 'balance'];
 export const DETAIL_COLUMNS = ['coin', 'address', 'snapshot_height', 'balance', 'message', 'signature'];
 export const PASSED = '\u001B[32m✓\u001B[39m';
@@ -20,4 +18,6 @@ export const DETAIL_KEY_MAPPING = {
   'USDT-ALGO': 'ALGO',
   'ETH-BTTC': 'ETH',
   'BETH-Heco': 'ETH',
+  'BTC-TRC20': 'TRX',
+  'USDT-SOL': 'SOL',
 }

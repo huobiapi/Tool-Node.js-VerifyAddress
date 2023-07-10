@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "algosdk": "^2.3.0",
+    "bs58": "^4.0.1",
     "btc-message-verifier": "^1.0.0",
     "commander": "^9.4.1",
     "csv-parse": "^5.3.3",
