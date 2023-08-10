@@ -175,10 +175,6 @@ function verify(message, address, signature) {
     return false;
   } else {
     try {
-      // const message = Buffer.from(msg, 'utf8')
-      // const signature = Buffer.from(sig, 'base64')
-      // const verifyKey = base58.decode(pubKey)
-      // return nacl.sign.detached.verify(message, signature, verifyKey)
       const publicKey = address;
       const messageHandler = Buffer.from(message, 'utf8');
       const signatureHandler = Buffer.from(signature, 'base64');
@@ -225,6 +221,8 @@ const DETAIL_KEY_MAPPING = {
   'BETH-Heco': 'ETH',
   'BTC-TRC20': 'TRX',
   'USDT-SOL': 'SOL',
+  'stETH': 'ETH',
+  'stUSDT-TRC20': 'TRX',
 };
 
 // Initialization cli program with commander

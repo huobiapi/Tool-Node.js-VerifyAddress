@@ -20,4 +20,6 @@ export const DETAIL_KEY_MAPPING = {
   'BETH-Heco': 'ETH',
   'BTC-TRC20': 'TRX',
   'USDT-SOL': 'SOL',
+  'stETH': 'ETH',
+  'stUSDT-TRC20': 'TRX',
 }
