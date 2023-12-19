@@ -21,11 +21,11 @@ export default function verify(message, address, signature) {
     try {
       let signedStr;
 
-      const tail = signature.substring(128, 130);
+      const tail = signature.slice(-2);
       if(tail === '01')
-        signedStr = signature.substring(0,128)+'1c';
+        signedStr = signature.slice(0, -2)+'1c';
       else if(tail === '00')
-        signedStr = signature.substring(0,128)+'1b';
+        signedStr = signature.slice(0, -2)+'1b';
       else
         signedStr = signature;
 
