@@ -223,6 +223,8 @@ const DETAIL_KEY_MAPPING = {
   'USDT-SOL': 'SOL',
   'stETH': 'ETH',
   'stUSDT-TRC20': 'TRX',
+  'USDT-aEthUSDT': 'ETH',
+  'HTX-TRC20': 'TRX'
 };
 
 // Initialization cli program with commander
