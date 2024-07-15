@@ -1,6 +1,6 @@
 {
   "name": "proof-of-address",
-  "version": "1.5.1",
+  "version": "1.5.3",
   "description": "Proof of Reserves (PoR) to improve the security and transparency of user's assets by address",
   "main": "index.js",
   "author": "blockchain-validator",
