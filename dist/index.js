@@ -224,7 +224,8 @@ const DETAIL_KEY_MAPPING = {
   'stETH': 'ETH',
   'stUSDT-TRC20': 'TRX',
   'USDT-aEthUSDT': 'ETH',
-  'HTX-TRC20': 'TRX'
+  'HTX-TRC20': 'TRX',
+  'USDT-Omni': 'BTC'
 };
 
 // Initialization cli program with commander
