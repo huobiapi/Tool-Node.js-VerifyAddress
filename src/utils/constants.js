@@ -28,5 +28,8 @@ export const DETAIL_KEY_MAPPING = {
   'stUSDT-TRC20': 'TRX',
   'USDT-aEthUSDT': 'ETH',
   'HTX-TRC20': 'TRX',
-  'USDT-Omni': 'BTC'
+  'USDT-Omni': 'BTC',
+  'aETH': 'ETH',
+  'jsTRX': 'TRX',
+  'jUSDT-TRC20': 'TRX'
 }
