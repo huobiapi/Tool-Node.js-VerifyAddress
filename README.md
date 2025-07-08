@@ -17,6 +17,7 @@ Building this open source tool requires Node.js (version >= 14.20.0).
 Install dependencies
 ```shell
  npm install 
+ npm i -g zx bun
 ```
 
 build

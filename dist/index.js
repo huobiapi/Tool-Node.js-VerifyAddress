@@ -206,33 +206,44 @@ const PASSED = '\u001B[32m✓\u001B[39m';
 const FAILED = '\u001B[31m✕\u001B[39m';
 const DETAIL_KEY_MAPPING = {
   BTC: 'BTC',
+  'USDT-Omni': 'BTC',
+
   ETH: 'ETH',
-  TRX: 'TRX',
   BETH: 'ETH',
-  SOL: 'SOL',
-  XRP: 'XRP',
-  DOGE: 'DOGE',
   'HT-ETH': 'ETH',
   'ETH-Arbitrum': 'ETH',
   'ETH-Optimism': 'ETH',
   'USDT-Avalanche C-Chain': 'ETH',
-  'USDT-TRC20': 'TRX',
   'USDT-ETH': 'ETH',
   'USDT-BTTC': 'ETH',
-  'USDT-ALGO': 'ALGO',
   'ETH-BTTC': 'ETH',
   'BETH-Heco': 'ETH',
-  'BTC-TRC20': 'TRX',
-  'USDT-SOL': 'SOL',
   'stETH': 'ETH',
   'baseETH': 'ETH',
-  'stUSDT-TRC20': 'TRX',
   'USDT-aEthUSDT': 'ETH',
-  'HTX-TRC20': 'TRX',
-  'USDT-Omni': 'BTC',
+  'HTX-ERC20': 'ETH',
   'aETH': 'ETH',
+  'TRX-ERC20': 'ETH',
+  'BBTC-ERC20': 'ETH',
+  'WBTC-ERC20': 'ETH',
+
+  TRX: 'TRX',
+  'USDT-TRC20': 'TRX',
+  'BTC-TRC20': 'TRX',
+  'stUSDT-TRC20': 'TRX',
+  'HTX-TRC20': 'TRX',
   'jsTRX': 'TRX',
-  'jUSDT-TRC20': 'TRX'
+  'jUSDT-TRC20': 'TRX',
+
+  SOL: 'SOL',
+  'USDT-SOL': 'SOL',
+  'TRX-sol': 'SOL',
+
+  XRP: 'XRP',
+
+  DOGE: 'DOGE',
+
+  'USDT-ALGO': 'ALGO',
 };
 
 // Initialization cli program with commander
