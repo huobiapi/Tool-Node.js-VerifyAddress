@@ -25,6 +25,7 @@ export const DETAIL_KEY_MAPPING = {
   'TRX-ERC20': 'ETH',
   'BBTC-ERC20': 'ETH',
   'WBTC-ERC20': 'ETH',
+  'WLFI': 'ETH',
 
   TRX: 'TRX',
   'USDT-TRC20': 'TRX',
