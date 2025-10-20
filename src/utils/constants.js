@@ -26,6 +26,9 @@ export const DETAIL_KEY_MAPPING = {
   'BBTC-ERC20': 'ETH',
   'WBTC-ERC20': 'ETH',
   'WLFI': 'ETH',
+  'USDT-XPL': 'ETH',
+  'ERC20-USDC': 'ETH',
+  'STEAK-USDC': 'ETH',
 
   TRX: 'TRX',
   'USDT-TRC20': 'TRX',
@@ -38,6 +41,7 @@ export const DETAIL_KEY_MAPPING = {
   SOL: 'SOL',
   'USDT-SOL': 'SOL',
   'TRX-sol': 'SOL',
+  'USDC-SOL': 'SOL',
 
   XRP: 'XRP',
 
