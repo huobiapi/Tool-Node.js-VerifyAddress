@@ -230,7 +230,8 @@ const DETAIL_KEY_MAPPING = {
   'USDT-XPL': 'ETH',
   'ERC20-USDC': 'ETH',
   'STEAK-USDC': 'ETH',
-
+  'BEP20-USDC': 'ETH',
+  
   TRX: 'TRX',
   'USDT-TRC20': 'TRX',
   'BTC-TRC20': 'TRX',
