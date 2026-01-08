@@ -30,6 +30,7 @@ export const DETAIL_KEY_MAPPING = {
   'ERC20-USDC': 'ETH',
   'STEAK-USDC': 'ETH',
   'BEP20-USDC': 'ETH',
+  'ERC20-AETHUSDC': 'ETH',
   
   TRX: 'TRX',
   'USDT-TRC20': 'TRX',
@@ -38,6 +39,7 @@ export const DETAIL_KEY_MAPPING = {
   'HTX-TRC20': 'TRX',
   'jsTRX': 'TRX',
   'jUSDT-TRC20': 'TRX',
+  'jWBTC-TRC20': 'TRX',
 
   SOL: 'SOL',
   'USDT-SOL': 'SOL',

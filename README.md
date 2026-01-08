@@ -8,11 +8,22 @@ users, in order to confirm the solvency of Huobi.
 
 ## Introduction
 
+### Requirements
+
+Building and running this open source tool requires:
+
+- **Node.js**: >= 14.20.0
+- **NPM**: >= 8.3.0
+
+Check your versions:
+```shell
+node --version
+npm --version
+```
+
 ### Building the source
 
 Download the [latest build](https://github.com/huobiapi/Tool-Node.js-VerifyAddress/releases) for your operating system and architecture. Also, you can build the source by yourself.
-
-Building this open source tool requires Node.js (version >= 14.20.0).
 
 Install dependencies
 ```shell
@@ -60,9 +71,16 @@ How to use?
 
 ![cli-help.png](assets/cli-help.png)
 
-Verify address example:
+#### Usage Examples
+
+The snapshot file can be located anywhere. Provide the path (relative or absolute):
+
 ```shell
+# Relative path
 ./VerifyAddress --por_csv_filename ./huobi_por_xxxxyyzz.csv
+
+# Absolute path
+./VerifyAddress --por_csv_filename /path/to/huobi_por_xxxxyyzz.csv
 ```
 
 The result like below:
