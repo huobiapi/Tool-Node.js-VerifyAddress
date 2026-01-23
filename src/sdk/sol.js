@@ -1,6 +1,6 @@
 import nacl from 'tweetnacl'
 import base58 from 'bs58'
-import { isEmptySig } from '../utils/lib';
+import { isEmptySig } from '../utils/lib.js'
 
 /**
  * Verify a address's signature
@@ -9,18 +9,18 @@ import { isEmptySig } from '../utils/lib';
  * @param {string} signature - The message's signature (as returned by the sign() method). If a string is provided instead of a Buffer, it is assumed to be base64 encoded
  * @returns {boolean} - Indicates whether message's signature has been successfully verified
  */
-export default function verify(message, address, signature) {
+export default function verify (message, address, signature) {
   if (isEmptySig(signature)) {
-    return false;
+    return false
   } else {
     try {
-      const publicKey = address;
-      const messageHandler = Buffer.from(message, 'utf8');
-      const signatureHandler = Buffer.from(signature, 'base64');
-      const publicKeyHandler = base58.decode(publicKey);
-      return nacl.sign.detached.verify(messageHandler, signatureHandler, publicKeyHandler);
+      const publicKey = address
+      const messageHandler = Buffer.from(message, 'utf8')
+      const signatureHandler = Buffer.from(signature, 'base64')
+      const publicKeyHandler = base58.decode(publicKey)
+      return nacl.sign.detached.verify(messageHandler, signatureHandler, publicKeyHandler)
     } catch (err) {
-      return false;
+      return false
     }
   }
 }

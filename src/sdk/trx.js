@@ -1,8 +1,8 @@
-import TronWeb from 'tronweb';
-import { isEmptySig } from '../utils/lib';
+import TronWeb from 'tronweb'
+import { isEmptySig } from '../utils/lib.js'
 
-function verifySignature(msg, addr, sig) {
-  return TronWeb.Trx.verifySignature(msg, addr, sig);
+function verifySignature (msg, addr, sig) {
+  return TronWeb.Trx.verifySignature(msg, addr, sig)
 }
 
 /**
@@ -14,33 +14,26 @@ function verifySignature(msg, addr, sig) {
  * @param {string} signature - it's a signed message. see NOTE
  * @returns {boolean} - Indicates whether message's signature has been successfully verified
  */
-export default function verify(message, address, signature) {
-  if (isEmptySig(signature))
-    return false;
-  else {
+export default function verify (message, address, signature) {
+  if (isEmptySig(signature)) { return false } else {
     try {
-      let signedStr;
+      let signedStr
 
-      const tail = signature.slice(-2);
-      if(tail === '01')
-        signedStr = signature.slice(0, -2)+'1c';
-      else if(tail === '00')
-        signedStr = signature.slice(0, -2)+'1b';
-      else
-        signedStr = signature;
+      const tail = signature.slice(-2)
+      if (tail === '01') { signedStr = signature.slice(0, -2) + '1c' } else if (tail === '00') { signedStr = signature.slice(0, -2) + '1b' } else { signedStr = signature }
 
-      let verifyRes = verifySignature(Buffer.from(message).toString('hex'), address, signedStr);
+      let verifyRes = verifySignature(Buffer.from(message).toString('hex'), address, signedStr)
 
       if (!verifyRes) {
-        const hexStrWithout0x = TronWeb.toHex(message).replace(/^0x/, '');
-        const byteArray = TronWeb.utils.code.hexStr2byteArray(hexStrWithout0x);
-        const strHash= TronWeb.sha3(byteArray).replace(/^0x/, '');
-        verifyRes = verifySignature(strHash, address, signedStr);
+        const hexStrWithout0x = TronWeb.toHex(message).replace(/^0x/, '')
+        const byteArray = TronWeb.utils.code.hexStr2byteArray(hexStrWithout0x)
+        const strHash = TronWeb.sha3(byteArray).replace(/^0x/, '')
+        verifyRes = verifySignature(strHash, address, signedStr)
       }
 
-      return verifyRes;
+      return verifyRes
     } catch (err) {
-      return false;
+      return false
     }
   }
 }

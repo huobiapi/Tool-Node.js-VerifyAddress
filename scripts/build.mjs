@@ -1,4 +1,7 @@
 #!/usr/bin/env zx
+/* eslint-env node */
+/* global $ */
+
 const targets = [
   'bun-darwin-arm64',
   'bun-darwin-x64',

@@ -12,8 +12,8 @@ users, in order to confirm the solvency of Huobi.
 
 Building and running this open source tool requires:
 
-- **Node.js**: >= 14.20.0
-- **NPM**: >= 8.3.0
+- **Node.js**: >= 22.0.0
+- **NPM**: >= 10.0.0
 
 Check your versions:
 ```shell
@@ -27,14 +27,15 @@ Download the [latest build](https://github.com/huobiapi/Tool-Node.js-VerifyAddre
 
 Install dependencies
 ```shell
- npm install 
- npm i -g zx bun
+npm install 
+npm i -g zx bun
 ```
 
 build
 ```shell
 npm run build
 ```
+This command will generate the `dist` directory containing the compiled output.
 
 test
 ```shell

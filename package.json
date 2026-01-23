@@ -1,6 +1,6 @@
 {
   "name": "proof-of-address",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "Proof of Reserves (PoR) to improve the security and transparency of user's assets by address",
   "main": "index.js",
   "author": "blockchain-validator",
@@ -8,7 +8,6 @@
   "bin": "./dist/index.js",
   "scripts": {
     "build": "rollup src/index.js --file dist/index.js --format cjs",
-    "test": "jest",
     "compile": "zx scripts/build.mjs"
   },
   "dependencies": {
@@ -25,10 +24,7 @@
     "web3": "1.10.4"
   },
   "devDependencies": {
-    "@jest/globals": "29.7.0",
-    "jest": "29.7.0",
-    "rollup": "3.29.5",
-    "rollup-jest": "3.1.0"
+    "rollup": "3.29.5"
   },
   "overrides": {
     "axios": "1.12.0",

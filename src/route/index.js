@@ -1,8 +1,8 @@
-import verifyBtc from "../sdk/btc";
-import verifyEvm from "../sdk/evm";
-import verifyTrx from "../sdk/trx";
-import verifyAlgo from "../sdk/algo";
-import verifySol from "../sdk/sol";
+import verifyBtc from '../sdk/btc.js'
+import verifyEvm from '../sdk/evm.js'
+import verifyTrx from '../sdk/trx.js'
+import verifyAlgo from '../sdk/algo.js'
+import verifySol from '../sdk/sol.js'
 
 /**
  * Route SDK support, Map coin to function
@@ -10,9 +10,9 @@ import verifySol from "../sdk/sol";
  * @returns {function} - Indicates whether chain signature will be called
  */
 export const verifySwitch = (chain) => ({
-  'BTC': verifyBtc,
-  'ETH': verifyEvm,
-  'TRX': verifyTrx,
-  'ALGO': verifyAlgo,
-  'SOL': verifySol,
-})[chain];
+  BTC: verifyBtc,
+  ETH: verifyEvm,
+  TRX: verifyTrx,
+  ALGO: verifyAlgo,
+  SOL: verifySol
+})[chain]
