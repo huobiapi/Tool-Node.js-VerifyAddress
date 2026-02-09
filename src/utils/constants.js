@@ -31,6 +31,7 @@ export const DETAIL_KEY_MAPPING = {
   'STEAK-USDC': 'ETH',
   'BEP20-USDC': 'ETH',
   'ERC20-AETHUSDC': 'ETH',
+  'BASE-USDC': 'ETH',
 
   TRX: 'TRX',
   'USDT-TRC20': 'TRX',
