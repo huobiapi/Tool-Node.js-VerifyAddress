@@ -1,6 +1,6 @@
 {
   "name": "proof-of-address",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "Proof of Reserves (PoR) to improve the security and transparency of user's assets by address",
   "main": "index.js",
   "author": "blockchain-validator",
@@ -12,15 +12,15 @@
   },
   "dependencies": {
     "algosdk": "2.11.0",
-    "bs58": "4.0.1",
+    "bs58": "catalog:bs58v4",
     "btc-message-verifier": "1.0.0",
     "commander": "9.5.0",
     "csv-parse": "5.6.0",
     "ethereumjs-util": "7.1.5",
-    "lodash": "4.17.21",
+    "lodash": "catalog:",
     "tree-console": "1.2.1",
     "tronweb": "4.4.0",
-    "tweetnacl": "1.0.3",
+    "tweetnacl": "catalog:",
     "web3": "1.10.4"
   },
   "devDependencies": {

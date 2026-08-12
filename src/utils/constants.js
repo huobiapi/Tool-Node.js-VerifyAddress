@@ -10,7 +10,7 @@ export const DETAIL_KEY_MAPPING = {
   ETH: 'ETH',
   BETH: 'ETH',
   'HT-ETH': 'ETH',
-  'ETH-Arbitrum': 'ETH',
+  'ETH-ARB': 'ETH',
   'ETH-Optimism': 'ETH',
   'USDT-Avalanche C-Chain': 'ETH',
   'USDT-ETH': 'ETH',
