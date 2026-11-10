@@ -1,9 +1,11 @@
 import fs from 'fs'
-import { filter } from 'lodash'
+import lodash from 'lodash'
 import { parse } from 'csv-parse/sync'
 import { verifySwitch } from './route/index.js'
 import { initCli, getWatershed } from './utils/lib.js'
 import { PLACEHOLDER, SUMMARY_COLUMNS, DETAIL_COLUMNS, DETAIL_KEY_MAPPING, PASSED, FAILED } from './utils/constants.js'
+
+const { filter } = lodash
 
 // Initialization cli program with commander
 const porCsvFilename = initCli()

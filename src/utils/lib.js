@@ -1,6 +1,8 @@
 import { execSync } from 'child_process'
-import { isEmpty } from 'lodash'
+import lodash from 'lodash'
 import { Command } from 'commander'
+
+const { isEmpty } = lodash
 
 /**
  * Check signature is empty

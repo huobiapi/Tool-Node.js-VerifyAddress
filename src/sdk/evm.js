@@ -1,8 +1,5 @@
 import Web3 from 'web3'
-import { keccak } from 'ethereumjs-util/dist/hash'
-import { bufferToHex } from 'ethereumjs-util/dist/bytes'
-import { publicToAddress } from 'ethereumjs-util/dist/account'
-import { fromRpcSig, ecrecover } from 'ethereumjs-util/dist/signature'
+import { keccak, bufferToHex, publicToAddress, fromRpcSig, ecrecover } from 'ethereumjs-util'
 import { isEmptySig } from '../utils/lib.js'
 
 /**
